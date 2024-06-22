@@ -1,5 +1,5 @@
 {
-	"name": "SQL script 1",
+	"name": "demo",
 	"properties": {
 		"content": {
 			"query": "-- This is auto-generated code\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'https://synapsecoursenewdl.dfs.core.windows.net/nyc-taxidata/raw/trip_data_green_csv/**',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0'\n    ) AS [result]\n",
