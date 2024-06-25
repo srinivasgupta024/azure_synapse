@@ -5,7 +5,7 @@
 			"name": "nyc_taxi/explore"
 		},
 		"content": {
-			"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'vendor_unquoted.csv',\n        DATA_SOURCE = 'nyc_taxi_data_raw',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE,\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR  = '\\n'\n    ) \nAS [result]",
+			"query": "SELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'vendor_unquoted.csv',\n        DATA_SOURCE = 'nyc_taxi_data_raw',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE,\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR  = '\\n'\n    ) \nAS vendor\n\n\nSELECT\n    TOP 100 *\nFROM\n    OPENROWSET(\n        BULK 'vendor_escaped.csv',\n        DATA_SOURCE = 'nyc_taxi_data_raw',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE,\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR  = '\\n',\n        ESCAPECHAR = '\\\\'\n    ) \nAS vendor\n\nSELECT\n    *\nFROM\n    OPENROWSET(\n        BULK 'vendor.csv',\n        DATA_SOURCE = 'nyc_taxi_data_raw',\n        FORMAT = 'CSV',\n        PARSER_VERSION = '2.0',\n        HEADER_ROW = TRUE,\n        FIELDTERMINATOR = ',',\n        ROWTERMINATOR  = '\\n',\n        FIELDQUOTE = '\"'\n    ) \nAS vendor",
 			"metadata": {
 				"language": "sql"
 			},
